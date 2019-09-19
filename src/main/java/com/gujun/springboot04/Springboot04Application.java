@@ -3,20 +3,38 @@ package com.gujun.springboot04;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import java.util.List;
 
 @SpringBootApplication
+@PropertySource(value = {"classpath:system.properties"},ignoreResourceNotFound=true)  //读取属性文件
 public class Springboot04Application extends WebMvcConfigurationSupport {
+
+//    @Value("${system.password.secret}")
+//    private String secret;
 
     public static void main(String[] args) {
         SpringApplication.run(Springboot04Application.class, args);
     }
+
+//    @Bean
+//    public Object test(){
+//        System.out.println(secret);
+//        PasswordEncoder passwordEncoder=new Pbkdf2PasswordEncoder(secret);
+//        System.out.println(passwordEncoder.encode("123456"));
+//        System.out.println(passwordEncoder.encode("root"));
+//        return new Object();
+//    }
 
     //配置fastjson
     @Override
