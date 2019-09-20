@@ -59,6 +59,7 @@ public class RedisConfig {
         Map<String, RedisCacheConfiguration> configurationMap = new HashMap<>();
         configurationMap.put("cacheNoLimit",RedisCacheConfiguration.defaultCacheConfig());
         configurationMap.put("cacheLimit",RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(30))); //设置缓存期限为30分钟
+        configurationMap.put("userInfoCache",RedisCacheConfiguration.defaultCacheConfig()); //缓存用户信息
         return RedisCacheManager.builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
                 .initialCacheNames(configurationMap.keySet())
                 .withInitialCacheConfigurations(configurationMap)

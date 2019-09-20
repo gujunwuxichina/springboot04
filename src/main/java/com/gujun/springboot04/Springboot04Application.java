@@ -17,7 +17,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 import java.util.List;
 
 @SpringBootApplication
-@PropertySource(value = {"classpath:system.properties"},ignoreResourceNotFound=true)  //读取属性文件
 public class Springboot04Application extends WebMvcConfigurationSupport {
 
 //    @Value("${system.password.secret}")
@@ -27,6 +26,7 @@ public class Springboot04Application extends WebMvcConfigurationSupport {
         SpringApplication.run(Springboot04Application.class, args);
     }
 
+    //测试Bean，来获取加密后的密码；
 //    @Bean
 //    public Object test(){
 //        System.out.println(secret);

@@ -70,5 +70,6 @@ mybatis:
   type-aliases-package: com.gujun.springboot04.entity
 
 #自定义属性
-self-defined:
-    pwd-seccet:gujun
+system:
+  password:
+    secret: gujun
